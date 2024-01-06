@@ -5,3 +5,24 @@
 // The function composition of an empty list of functions is the identity function f(x) = x.
 // You may assume each function in the array accepts one integer as input and returns one integer as output.
 
+// /**
+//  * @param {Function[]} functions
+//  * @return {Function}
+//  */
+var compose = function (functions) {
+  var l = functions.length;
+
+  return function (x) {
+    var sum = 0;
+    if (l !== 0) {
+      for (let i = l - 1; i >= 0; i--) {
+        sum = functions[i](x);
+
+        x = sum;
+      }
+      return sum;
+    } else return x;
+  };
+};
+const fn = compose([(x) => x + 1, (x) => 2 * x]);
+console.log(fn(4)); // 9
