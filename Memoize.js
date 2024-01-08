@@ -1,5 +1,5 @@
 //Given a function fn, return a memoized version of that function.
-//A memoized function is a function that will never be called twice with the same inputs. 
+//A memoized function is a function that will never be called twice with the same inputs.
 //Instead it will return a cached value.
 
 // You can assume there are 3 possible input functions: sum, fib, and factorial.
@@ -14,28 +14,27 @@
 //  */
 
 function memoize(fn) {
-    const cache={};
-    return function(...args) {
-        const key=args.join(',');
+  const cache = {};
+  return function (...args) {
+    const key = args.join(",");
 
-        if(key in cache){
-            return cache[key]
-        }
-
-        result=fn(...args)
-        cache[key]=result;
-        return result;
+    if (key in cache) {
+      return cache[key];
     }
+
+    result = fn(...args);
+    cache[key] = result;
+    return result;
+  };
 }
 
-function add(a,b){
- callCount += 1;
-   return a + b;
+function add(a, b) {
+  callCount += 1;
+  return a + b;
 }
- let callCount = 0;
- const memoizedFn = memoize(add) 
- 
-  memoizedFn(2, 3) // 5
-  memoizedFn(2, 3) // 5
-  console.log(callCount) // 1 
- 
+let callCount = 0;
+const memoizedFn = memoize(add);
+
+memoizedFn(2, 3); // 5
+memoizedFn(2, 3); // 5
+console.log(callCount); // 1
