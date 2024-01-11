@@ -10,7 +10,6 @@ function createCounter(n) {
     counterValue += 1;
     return current;
   }
-
   return counter;
 }
 
